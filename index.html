@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wan Advertising</title>
+<meta name="description" content="Wan Advertising - banner and signboard printing in Kuala Terengganu. Website, Instagram, TikTok, WhatsApp.">
+<link rel="icon" href="image/wan.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F2EEE4;
+  --black: #141210;
+  --orange: #F4B71B;
+  --white: #FFFFFF;
+  --gray: #8A837A;
+
+  --display: "Archivo Black", "Arial Black", sans-serif;
+  --body: "Space Grotesk", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --pad: 18px;          /* page padding */
+  --gap: 14px;          /* stack rhythm */
+  --border: 3px;
+  --shadow-card: 8px;   /* header hard shadow */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 28px var(--pad) 40px;
+  font-family: var(--body);
+  color: var(--black);
+  background-color: var(--cream);
+  /* faint 40px graph-paper grid over the cream background */
+  background-image:
+    repeating-linear-gradient(to right, rgba(20,18,16,.06) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(to bottom, rgba(20,18,16,.06) 0 1px, transparent 1px 40px);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* ---------- header card ---------- */
+
+.card {
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: var(--shadow-card) var(--shadow-card) 0 var(--black);
+  padding: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mark {
+  flex: none;
+  display: block;
+  height: 44px;
+  width: auto;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 26px;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 2px solid var(--black);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.tagline .dot { color: var(--orange); }
+
+/* ---------- status strip ---------- */
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 9px 12px;
+  background: var(--orange);
+  border: var(--border) solid var(--black);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.status .value {
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* ---------- link buttons ---------- */
+
+.links {
+  list-style: none;
+  margin: var(--gap) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.link {
+  --sh: 6px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: var(--white);
+  border: var(--border) solid var(--black);
+  box-shadow: var(--sh) var(--sh) 0 var(--black);
+  color: var(--black);
+  text-decoration: none;
+  transition: transform .12s ease-out, box-shadow .12s ease-out, background-color .12s ease-out;
+}
+
+.idx {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: var(--black);
+  color: var(--orange);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.text { min-width: 0; }
+
+.title {
+  display: block;
+  font-family: var(--display);
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.sub {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray);
+  overflow-wrap: anywhere;
+}
+
+.arrow {
+  margin-left: auto;
+  flex: none;
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--orange);
+}
+
+.link:hover {
+  --sh: 9px;
+  transform: translate(-3px, -3px);
+  background: var(--cream);
+}
+
+.link:active {
+  --sh: 3px;
+  transform: translate(3px, 3px);
+}
+
+.link:focus-visible {
+  outline: 3px solid var(--black);
+  outline-offset: 4px;
+}
+
+/* inverted primary CTA */
+
+.link.invert {
+  background: var(--black);
+  color: var(--white);
+}
+
+.link.invert .idx {
+  background: var(--orange);
+  color: var(--black);
+}
+
+.link.invert .sub { color: #A9A29A; }
+
+.link.invert:hover { background: #26201A; }
+
+.link.invert:focus-visible { outline-color: var(--orange); }
+
+/* ---------- footer ---------- */
+
+footer {
+  margin-top: 34px;
+  text-align: center;
+}
+
+.rule {
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0 auto 14px;
+  background: var(--orange);
+}
+
+footer p {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+/* ---------- 760px: tablet / small desktop ---------- */
+
+@media (min-width: 760px) {
+  :root {
+    --pad: 32px;
+    --gap: 18px;
+    --shadow-card: 10px;
+  }
+
+  body { padding-top: 56px; padding-bottom: 64px; }
+
+  .wrap { max-width: 560px; }
+
+  .card { padding: 44px; }
+
+  .brand { gap: 18px; }
+
+  .mark { height: 52px; }
+
+  h1 { font-size: 34px; }
+
+  .tagline {
+    margin-top: 24px;
+    padding-top: 20px;
+    font-size: 13.5px;
+  }
+
+  .status {
+    margin-top: 28px;
+    padding: 11px 16px;
+    font-size: 11px;
+  }
+
+  .link {
+    --sh: 8px;
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .link:hover { --sh: 11px; }
+
+  .link:active {
+    --sh: 3px;
+    transform: translate(5px, 5px);
+  }
+
+  .idx { width: 38px; height: 38px; }
+
+  .title { font-size: 18px; }
+
+  .sub { font-size: 10.5px; }
+
+  .arrow { font-size: 20px; }
+
+  footer { margin-top: 44px; }
+}
+
+/* ---------- 1100px: large desktop ---------- */
+
+@media (min-width: 1100px) {
+  body { padding-top: 76px; }
+
+  .wrap { max-width: 620px; }
+}
+
+/* ---------- reduced motion: no hover transforms ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .link { transition: none; }
+  .link:hover,
+  .link:active { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <!-- TODO: replace - agency name and tagline -->
+  <header class="card">
+    <div class="brand">
+      <img class="mark" src="image/wan-dark.png" alt="Wan Advertising logo" width="70" height="44">
+      <h1>Wan Advertising</h1>
+    </div>
+    <p class="tagline">Banner &amp; signboard printing<span class="dot">.</span></p>
+  </header>
+
+  <!-- TODO: replace - availability text -->
+  <div class="status">
+    <span>Status</span>
+    <span class="value">Open for projects</span>
+  </div>
+
+  <!-- TODO: replace - all four hrefs and subtext lines below -->
+  <ul class="links">
+    <li>
+      <a class="link" href="https://wanadvertising.com" target="_blank" rel="noopener">
+        <span class="idx">01</span>
+        <span class="text">
+          <span class="title">Website</span>
+          <span class="sub">wanadvertising.com</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="https://instagram.com/wanadvertising" target="_blank" rel="noopener">
+        <span class="idx">02</span>
+        <span class="text">
+          <span class="title">Instagram</span>
+          <span class="sub">@wanadvertising</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="https://tiktok.com/@wanadvertising" target="_blank" rel="noopener">
+        <span class="idx">03</span>
+        <span class="text">
+          <span class="title">TikTok</span>
+          <span class="sub">@wanadvertising</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+    <li>
+      <a class="link invert" href="https://wa.me/601111038075" target="_blank" rel="noopener">
+        <span class="idx">04</span>
+        <span class="text">
+          <span class="title">WhatsApp</span>
+          <span class="sub">011-1103 8075</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- TODO: replace - location -->
+  <footer>
+    <span class="rule" aria-hidden="true"></span>
+    <p>Wan Advertising &middot; Kuala Terengganu</p>
+  </footer>
+
+</main>
+
+</body>
+</html>
