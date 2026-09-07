@@ -8,7 +8,35 @@
       name="description"
       content="Wan Advertising - banner and signboard printing in Kuala Terengganu. Website, Instagram, TikTok, WhatsApp."
     />
+    <meta name="theme-color" content="#f2eee4" />
+
+    <!-- OpenGraph / WhatsApp / Facebook Share Preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Wan Advertising — Link in Bio" />
+    <meta
+      property="og:description"
+      content="Banner &amp; signboard printing in Kuala Terengganu. Website, Instagram, TikTok, WhatsApp."
+    />
+    <meta
+      property="og:image"
+      content="https://links.wanadvertising.com/image/wan.png"
+    />
+    <meta property="og:url" content="https://links.wanadvertising.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Wan Advertising — Link in Bio" />
+    <meta
+      name="twitter:description"
+      content="Banner &amp; signboard printing in Kuala Terengganu. Website, Instagram, TikTok, WhatsApp."
+    />
+    <meta
+      name="twitter:image"
+      content="https://links.wanadvertising.com/image/wan.png"
+    />
+
     <link rel="icon" href="image/wan.png" />
+    <link rel="apple-touch-icon" href="image/wan.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -113,6 +141,42 @@
         color: var(--orange);
       }
 
+      /* ---------- operating hours ---------- */
+
+      .hours {
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px dashed var(--black);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+      }
+
+      .hours-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 0;
+      }
+
+      .hours-day {
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--black);
+      }
+
+      .hours-time {
+        color: var(--black);
+        text-align: right;
+      }
+
+      .hours-closed {
+        color: #dc2626;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
       /* ---------- status strip ---------- */
 
       .status {
@@ -131,8 +195,23 @@
       }
 
       .status .value {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--black);
         color: var(--white);
+        padding: 4px 8px;
         font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+
+      .status .value::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: #22c55e;
+        border-radius: 50%;
       }
 
       /* ---------- link buttons ---------- */
@@ -343,6 +422,21 @@
         gap: 12px;
       }
 
+      .modal[open] .modal-card {
+        animation: modalPop 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes modalPop {
+        from {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
       /* ---------- footer ---------- */
 
       footer {
@@ -365,6 +459,19 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--black);
+      }
+
+      footer p a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-color: var(--orange);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+        transition: color 0.1s ease-out;
+      }
+
+      footer p a:hover {
+        color: #b88109;
       }
 
       /* ---------- 760px: tablet / small desktop ---------- */
@@ -405,6 +512,12 @@
           margin-top: 24px;
           padding-top: 20px;
           font-size: 13.5px;
+        }
+
+        .hours {
+          margin-top: 18px;
+          padding-top: 16px;
+          font-size: 11px;
         }
 
         .status {
@@ -493,6 +606,9 @@
         .modal-close:active {
           transform: none;
         }
+        .modal[open] .modal-card {
+          animation: none;
+        }
       }
     </style>
   </head>
@@ -511,6 +627,21 @@
           <h1>Wan Advertising</h1>
         </div>
         <p class="tagline">Print &amp; Signs<span class="dot">.</span></p>
+
+        <div class="hours" aria-label="Waktu Operasi">
+          <div class="hours-row">
+            <span class="hours-day">Ahad &ndash; Khamis</span>
+            <span class="hours-time">9:00 AM &ndash; 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sabtu</span>
+            <span class="hours-time">8:50 AM &ndash; 12:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Jumaat</span>
+            <span class="hours-time hours-closed">Tutup</span>
+          </div>
+        </div>
       </header>
 
       <!-- TODO: replace - availability text -->
@@ -540,7 +671,7 @@
         <li>
           <a
             class="link"
-            href="https://wa.me/601111038075"
+            href="https://wa.me/601111038075?text=Hi%20Wan%2C%20nak%20bincang%20projek%20signboard"
             target="_blank"
             rel="noopener"
           >
@@ -626,7 +757,15 @@
       <!-- TODO: replace - location -->
       <footer>
         <span class="rule" aria-hidden="true"></span>
-        <p>Wan Advertising &middot; Kuala Terengganu</p>
+        <p>
+          Wan Advertising &middot;
+          <a
+            href="https://maps.google.com/?q=Wan+Advertising+Kuala+Terengganu"
+            target="_blank"
+            rel="noopener"
+            title="Open in Google Maps"
+          >Kuala Terengganu</a>
+        </p>
       </footer>
     </main>
 
@@ -646,27 +785,27 @@
         <div class="modal-options">
           <a
             class="link"
-            href="https://wa.me/601110216969"
+            href="https://wa.me/601110216969?text=Hi%20Asyraf%2C%20saya%20nak%20tanya%20pasal%20printing%20banner%2Fsignboard"
             target="_blank"
             rel="noopener"
           >
             <span class="idx">01</span>
             <span class="text">
-              <span class="title">Admin</span>
-              <span class="sub">013-402 7669</span>
+              <span class="title">Asyraf</span>
+              <span class="sub">011-1021 6969</span>
             </span>
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a
             class="link"
-            href="https://wa.me/60134027669"
+            href="https://wa.me/60134027669?text=Hi%20Admin%2C%20nak%20buat%20pertanyaan%20tempahan"
             target="_blank"
             rel="noopener"
           >
             <span class="idx">02</span>
             <span class="text">
-              <span class="title">Asyraf</span>
-              <span class="sub">011-1021 6969</span>
+              <span class="title">Admin</span>
+              <span class="sub">013-402 7669</span>
             </span>
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
@@ -679,22 +818,29 @@
       const openBtn = document.getElementById("openWaModal");
       const closeBtn = document.getElementById("closeWaModal");
 
+      function closeModal() {
+        if (modal && modal.open) {
+          modal.close();
+          if (openBtn) openBtn.focus();
+        }
+      }
+
       if (openBtn && modal) {
         openBtn.addEventListener("click", () => modal.showModal());
       }
       if (closeBtn && modal) {
-        closeBtn.addEventListener("click", () => modal.close());
+        closeBtn.addEventListener("click", closeModal);
       }
       if (modal) {
         modal.addEventListener("click", (e) => {
           const card = modal.querySelector(".modal-card");
           if (card && !card.contains(e.target)) {
-            modal.close();
+            closeModal();
           }
         });
 
         modal.querySelectorAll(".modal-options a").forEach((a) => {
-          a.addEventListener("click", () => modal.close());
+          a.addEventListener("click", () => closeModal());
         });
       }
     </script>
