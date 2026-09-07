@@ -247,8 +247,100 @@
         background: #26201a;
       }
 
-      .link.invert:focus-visible {
-        outline-color: var(--orange);
+      button.link {
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+      }
+
+      /* ---------- modal dialog ---------- */
+
+      .modal {
+        border: none;
+        padding: 0;
+        background: transparent;
+        max-width: calc(100% - 32px);
+        width: 440px;
+        margin: auto;
+      }
+
+      .modal:focus-visible {
+        outline: none;
+      }
+
+      .modal::backdrop {
+        background: rgba(20, 18, 16, 0.65);
+        backdrop-filter: blur(2px);
+      }
+
+      .modal-card {
+        background: var(--white);
+        border: var(--border) solid var(--black);
+        box-shadow: var(--shadow-card) var(--shadow-card) 0 var(--black);
+        padding: 24px 20px 20px;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--black);
+      }
+
+      .modal-title {
+        margin: 0;
+        font-family: var(--display);
+        font-size: 18px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+      }
+
+      .modal-close {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        background: var(--cream);
+        border: 2px solid var(--black);
+        box-shadow: 2px 2px 0 var(--black);
+        font-family: var(--display);
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--black);
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        transition:
+          transform 0.1s ease-out,
+          box-shadow 0.1s ease-out,
+          background-color 0.1s ease-out;
+      }
+
+      .modal-close:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0 var(--black);
+        background: var(--orange);
+      }
+
+      .modal-close:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0 var(--black);
+      }
+
+      .modal-close:focus-visible {
+        outline: 2px solid var(--black);
+        outline-offset: 2px;
+      }
+
+      .modal-options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
 
       /* ---------- footer ---------- */
@@ -353,6 +445,24 @@
           font-size: 20px;
         }
 
+        .modal {
+          width: 500px;
+        }
+
+        .modal-card {
+          padding: 30px;
+        }
+
+        .modal-title {
+          font-size: 20px;
+        }
+
+        .modal-close {
+          width: 36px;
+          height: 36px;
+          font-size: 18px;
+        }
+
         footer {
           margin-top: 44px;
         }
@@ -373,11 +483,14 @@
       /* ---------- reduced motion: no hover transforms ---------- */
 
       @media (prefers-reduced-motion: reduce) {
-        .link {
+        .link,
+        .modal-close {
           transition: none;
         }
         .link:hover,
-        .link:active {
+        .link:active,
+        .modal-close:hover,
+        .modal-close:active {
           transform: none;
         }
       }
@@ -409,31 +522,32 @@
       <!-- TODO: replace - website / Instagram / TikTok hrefs below are still placeholders -->
       <ul class="links">
         <li>
-          <a
+          <button
+            type="button"
             class="link invert"
-            href="https://wa.me/601111038075"
-            target="_blank"
-            rel="noopener"
+            id="openWaModal"
+            aria-haspopup="dialog"
+            aria-controls="waModal"
           >
             <span class="idx">01</span>
             <span class="text">
-              <span class="title">WhatsApp</span>
-              <span class="sub">011-1103 8075</span>
+              <span class="title">Team Sales</span>
+              <span class="sub">Asyraf &amp; Admin</span>
             </span>
             <span class="arrow" aria-hidden="true">&rarr;</span>
-          </a>
+          </button>
         </li>
         <li>
           <a
             class="link"
-            href="https://wa.me/601110216969"
+            href="https://wa.me/601111038075"
             target="_blank"
             rel="noopener"
           >
             <span class="idx">02</span>
             <span class="text">
-              <span class="title">WhatsApp 2</span>
-              <span class="sub">011-1021 6969</span>
+              <span class="title">Wan</span>
+              <span class="sub">011-1103 8075</span>
             </span>
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
@@ -515,5 +629,74 @@
         <p>Wan Advertising &middot; Kuala Terengganu</p>
       </footer>
     </main>
+
+    <dialog id="waModal" class="modal" aria-labelledby="waModalTitle">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2 class="modal-title" id="waModalTitle">Team Sales</h2>
+          <button
+            type="button"
+            class="modal-close"
+            id="closeWaModal"
+            aria-label="Close dialog"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-options">
+          <a
+            class="link"
+            href="https://wa.me/601110216969"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="idx">01</span>
+            <span class="text">
+              <span class="title">Admin</span>
+              <span class="sub">013-402 7669</span>
+            </span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a
+            class="link"
+            href="https://wa.me/60134027669"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="idx">02</span>
+            <span class="text">
+              <span class="title">Asyraf</span>
+              <span class="sub">011-1021 6969</span>
+            </span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      const modal = document.getElementById("waModal");
+      const openBtn = document.getElementById("openWaModal");
+      const closeBtn = document.getElementById("closeWaModal");
+
+      if (openBtn && modal) {
+        openBtn.addEventListener("click", () => modal.showModal());
+      }
+      if (closeBtn && modal) {
+        closeBtn.addEventListener("click", () => modal.close());
+      }
+      if (modal) {
+        modal.addEventListener("click", (e) => {
+          const card = modal.querySelector(".modal-card");
+          if (card && !card.contains(e.target)) {
+            modal.close();
+          }
+        });
+
+        modal.querySelectorAll(".modal-options a").forEach((a) => {
+          a.addEventListener("click", () => modal.close());
+        });
+      }
+    </script>
   </body>
 </html>
